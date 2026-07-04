@@ -11,19 +11,25 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                dir('my-app') {
+                    sh 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                dir('my-app') {
+                    sh 'mvn test'
+                }
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                dir('my-app') {
+                    sh 'mvn package'
+                }
             }
         }
 
